@@ -1,0 +1,23 @@
+{
+  "name": "dev-tinder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NemishteAnushka/Dev-Tinder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NemishteAnushka/Dev-Tinder/issues"
+  },
+  "homepage": "https://github.com/NemishteAnushka/Dev-Tinder#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}

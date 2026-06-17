@@ -18,6 +18,7 @@
   "homepage": "https://github.com/NemishteAnushka/Dev-Tinder#readme",
   "dependencies": {
     "express": "^5.2.1",
+    "mongoose": "^9.7.0",
     "nodemon": "^3.1.14"
   }
 }

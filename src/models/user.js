@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema(
     gender: {
       type: String,
       default: "male",
+      //customvalidation
       validate(value) {
         if (!["male", "female", "other"].includes(value)) {
           throw new Error("Gender can be male , female or other");

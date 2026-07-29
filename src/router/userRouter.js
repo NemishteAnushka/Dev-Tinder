@@ -55,12 +55,42 @@ userRouter.get("/user/feed", userAuth, async (req, res) => {
 
     console.log(hideUserRequests);
 
-    const userFeed = await user.find({
-      _id: { $nin: Array.from(hideUserRequests) },
-    }).select("firstName lastName age gender skills");
+    const userFeed = await user
+      .find({
+        $and: [
+          { _id: { $nin: Array.from(hideUserRequests) } },
+          { _id: { $ne: loggedInUser.id } },
+        ],
+      })
+      .select("firstName lastName age gender skills");
     res.json({ data: userFeed });
   } catch (error) {
     res.status(400).send(`Something Went Wrong ${error.message}`);
   }
 });
+
+//Work flow for feed api
+
+// Login User (A1)
+//         │
+//         ▼
+// Find all connection requests involving A1
+//         │
+//         ▼
+// Collect every fromUserId and toUserId
+//         │
+//         ▼
+// Hide those users using a Set
+//         │
+//         ▼
+// Convert Set → Array
+//         │
+//         ▼
+// Find all users whose IDs are NOT in that array
+//         │
+//         ▼
+// Also exclude A1 (logged-in user)
+//         │
+//         ▼
+// Return the remaining users as the feed
 module.exports = userRouter;

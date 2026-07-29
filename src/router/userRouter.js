@@ -41,6 +41,11 @@ userRouter.get("/user/connections", userAuth, async (req, res) => {
 });
 
 userRouter.get("/user/feed", userAuth, async (req, res) => {
+  const limit = parseInt(req.query.limit);
+  const page = parseInt(req.query.page);
+
+  const skip = (page - 1) * limit;
+
   try {
     const loggedInUser = req.user;
     const connectionRequest = await ConnectionRequestModel.find({
@@ -62,7 +67,9 @@ userRouter.get("/user/feed", userAuth, async (req, res) => {
           { _id: { $ne: loggedInUser.id } },
         ],
       })
-      .select("firstName lastName age gender skills");
+      .select("firstName lastName age gender skills")
+      .skip(skip)
+      .limit(limit);
     res.json({ data: userFeed });
   } catch (error) {
     res.status(400).send(`Something Went Wrong ${error.message}`);

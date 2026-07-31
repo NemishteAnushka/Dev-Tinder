@@ -36,6 +36,15 @@ const userSchema = new mongoose.Schema(
         }
       },
     },
+    photo_url: {
+      type: String,
+      default:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+    },
+    about: {
+      type: String,
+      default: "Hello! I am using DevTinder.",
+    },
     skills: {
       type: [String],
     },

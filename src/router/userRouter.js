@@ -67,7 +67,7 @@ userRouter.get("/user/feed", userAuth, async (req, res) => {
           { _id: { $ne: loggedInUser.id } },
         ],
       })
-      .select("firstName lastName age gender skills")
+      .select("firstName lastName age gender skills photo_url about")
       .skip(skip)
       .limit(limit);
     res.json({ data: userFeed });

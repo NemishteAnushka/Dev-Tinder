@@ -21,7 +21,7 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
 
   await loggedIn.save();
   console.log("after", loggedIn);
-  res.send("Profile updated successfully");
+  res.json(loggedIn);
 });
 
 profileRouter.patch("/profile/update-password", userAuth, async (req, res) => {

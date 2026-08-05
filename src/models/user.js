@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema(
     photo_url: {
       type: String,
       default:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+        "https://media.istockphoto.com/id/1451587807/it/vettoriale/vettore-dellicona-del-profilo-utente-avatar-o-icona-della-persona-immagine-del-profilo.jpg?b=1&s=170x170&k=20&c=xNUdw9AFqAr9co18eDQPoahFxSlTr7VX5qwGPHPXtIc=",
     },
     about: {
       type: String,
